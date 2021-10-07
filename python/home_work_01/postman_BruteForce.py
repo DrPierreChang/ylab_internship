@@ -83,7 +83,7 @@ positions = [city_locations[city_names[int(x)-1]] for x in path[minCounter]]
 # выводим точку старта
 print(positions[0], end=" -> ")
 
-# выводим позици у сумму расстояний по мере продвижения
+# выводим позиции и сумму расстояний по мере продвижения
 print(*[str(i[0]) + '[' + str(i[1]) + ']' for i in zip(positions[1:], sums)], sep=" -> ", end=" = ")
 
 # выводим конечну сумму
