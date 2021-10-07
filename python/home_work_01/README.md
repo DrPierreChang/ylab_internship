@@ -57,3 +57,6 @@ permutation, distance = solve_tsp_dynamic_programming(distance_matrix)
 
 #### Источники информации
 - https://github.com/fillipe-gsm/python-tsp
+
+### <p align="center">Что осталось сделать?</p>
+- Решить алгоритмами. Например, <a href="http://distrland.blogspot.com/2020/08/python.html">генетическим</a>
