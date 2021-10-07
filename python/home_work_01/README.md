@@ -1,4 +1,6 @@
-### <p align="center">postman_BruteForce.py - Решение простым перебором</p>
+На данный момент два решения:
+
+### <p align="center">1. postman_BruteForce.py - Решение простым перебором</p>
 
 #### Логика работы
 Задача — найти маршрут, в котором расстояние будет минимальным
@@ -25,4 +27,33 @@
 - https://thecode.media/path-js/
 - https://thecode.media/path-rec/
 
+</br>
 
+### <p align="center">2. postman_TSP_Solver.py - Решение с помощью библиотеки python_tsp</p>
+
+python-tsp - это библиотека, написанная на чистом Python для решения типичных задач о коммивояжере (Traveling Salesperson Problems).
+
+#### Установка
+~~~~
+pip install python_tsp
+~~~~
+
+#### Пример испльзования
+~~~~python
+import numpy as np
+from python_tsp.exact import solve_tsp_dynamic_programming
+
+distance_matrix = np.array([
+    [0,  5, 4, 10],
+    [5,  0, 8,  5],
+    [4,  8, 0,  3],
+    [10, 5, 3,  0]
+])
+permutation, distance = solve_tsp_dynamic_programming(distance_matrix)
+~~~~
+
+Решение будет [0, 1, 3, 2] с общим расстоянием 17.
+Это всегда замкнутый путь, поэтому после узла 2 мы возвращаемся к 0.
+
+#### Источники информации
+- https://github.com/fillipe-gsm/python-tsp
