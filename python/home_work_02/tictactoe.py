@@ -1,12 +1,13 @@
 import numpy as np
 
 
-# функция принимает строку и возвращает цвет в зависимости от значения
-# на O возвращает зеленый
-# на X возвращает красный
-# на '' возвращает конец форматирования
-# во всех остальных случаях возвращает желтый
-def choose_color(symbol):
+def choose_color(text: str):
+    # функция принимает строку и возвращает цвет в зависимости от значения
+    # на O возвращает зеленый
+    # на X возвращает красный
+    # на '' возвращает конец форматирования
+    # во всех остальных случаях возвращает желтый
+    # Цвета в кодировке ANSI
     class Bcolors:
         # HEADER = '\033[95m'
         # OKBLUE = '\033[94m'
@@ -17,12 +18,16 @@ def choose_color(symbol):
         ENDC = '\033[0m'
         # BOLD = '\033[1m'
         # UNDERLINE = '\033[4m'
-    if (symbol.lower()) == 'o':
+    # если принят символ O
+    if (text.lower()) == 'o':
         color = Bcolors.OKGREEN
-    elif (symbol.lower()) == 'x':
+    # если принят символ X
+    elif (text.lower()) == 'x':
         color = Bcolors.FAIL
-    elif symbol == '':
+    # если принята пустая строка. Используется для завершения форматирования
+    elif text == '':
         color = Bcolors.ENDC
+    # во всех остальных случаях
     else:
         color = Bcolors.WARNING
     return color

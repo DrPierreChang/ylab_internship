@@ -238,14 +238,14 @@ def human_turn(c_choice, h_choice):
 
 def main():
     """
-    Main function that calls all functions
+    Главная функция, которая вызывает все остальные функции
     """
     clean()
-    h_choice = ''  # X or O
-    c_choice = ''  # X or O
-    first = ''  # if human is the first
+    h_choice = ''  # выбор человека: играть за X или O
+    # c_choice = ''  # выбор компьютера: играть за X или O
+    first = ''  # человек ходит первым или нет
 
-    # Human chooses X or O to play
+    # Ждем пока человек не выберет X или O для начала игры
     while h_choice != 'O' and h_choice != 'X':
         try:
             print('')
@@ -256,13 +256,13 @@ def main():
         except (KeyError, ValueError):
             print('Bad choice')
 
-    # Setting computer's choice
+    # Когда человек выбрал X или O, оставшийся вариант достается компьютеру
     if h_choice == 'X':
         c_choice = 'O'
     else:
         c_choice = 'X'
 
-    # Human may starts first
+    # Ждем, пока человек выберет: играть первым или вторым
     clean()
     while first != 'Y' and first != 'N':
         try:
@@ -273,7 +273,7 @@ def main():
         except (KeyError, ValueError):
             print('Bad choice')
 
-    # Main loop of this game
+    # Основной цикл. Пока есть пустые клетки и игра не закончена, человек и компьютер ходят по-очереди
     while len(empty_cells(board)) > 0 and not game_over(board):
         if first == 'N':
             ai_turn(c_choice, h_choice)
