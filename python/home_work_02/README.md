@@ -1,5 +1,5 @@
 
-### <p align="center">Логика работы</p>
+### <p align="center">Общая логика работы игры. Функция main</p>
 
 1) Выбираем - играть за O или X:
     - переменные h_choice и c_choice хранят выбор человека и компьютера
@@ -16,7 +16,21 @@ while len(empty_cells(board)) > 0 and not game_over(board):
       
     human_turn(c_choice, h_choice)
     ai_turn(c_choice, h_choice)
+...
 ~~~~
+4) Если игра закончилась, то проходит проверка того, кто выиграл,
+и выводится соответствующее сообщение
+~~~~python
+if wins(board, HUMAN, num, rule):
+    clean()
+    print(f'Human turn [{h_choice}]')
+    render(board, c_choice, h_choice)
+    print(f"{win_loose_color}YOU WIN!{end_color}")
+...
+~~~~
+
+<p align="center"><img src="images/main.png" alt = "main function" width="450"></p>
+
 ### <p align="center">tictactoe.py</p>
 В файл tictactoe.py вынесены некоторые функции:
 

@@ -24,12 +24,12 @@ def choose_color(text: str):
     # если принят символ X
     elif (text.lower()) == 'x':
         color = Bcolors.FAIL
-    # если принята пустая строка. Используется для завершения форматирования
-    elif text == '':
-        color = Bcolors.ENDC
+    # если принята строка 'yellow'
+    elif text == 'yellow':
+        color = Bcolors.WARNING
     # во всех остальных случаях
     else:
-        color = Bcolors.WARNING
+        color = Bcolors.ENDC
     return color
 
 

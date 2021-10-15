@@ -18,6 +18,12 @@ COMP = +1
 num = 10
 rule = 5
 
+# указываем цвет сообщения при победе/проигрыше.
+# функция вернет желтый цвет при передаче в функцию любого символа кроме x, o, end
+win_loose_color = choose_color('yellow')
+# функция вернет код ANSi для завершения предыдущего форматирования
+end_color = choose_color('end')
+
 # генерируем игровое поле с заданной размерностью
 board = ([[0]*num for x in range(num)])
 
@@ -147,25 +153,23 @@ def render(state, c_choice, h_choice):
         +1: c_choice,
         0: ' '
     }
+    # линия определяет границы игрового поля
     str_line = '----------------------------------------------------------------------'
 
     print('\n' + str_line)
     cnt = 1
 
-
-
+    # в этом цикле рисуется игровое поле и определяется цвет X и O
     for row in state:
         for cell in row:
             symbol = chars[cell]
             start_color = choose_color(symbol)
-
-
             if cnt < 10:
-                print(f" {cnt}| {start_color}{symbol}{choose_color('')} |", end="")
+                print(f" {cnt}| {start_color}{symbol}{end_color} |", end="")
             elif cnt == 100:
-                print(f"{cnt}|{start_color}{symbol}{choose_color('')} |", end="")
+                print(f"{cnt}|{start_color}{symbol}{end_color} |", end="")
             else:
-                print(f"{cnt}| {start_color}{symbol}{choose_color('')} |", end="")
+                print(f"{cnt}| {start_color}{symbol}{end_color} |", end="")
             cnt += 1
         print('\n' + str_line)
 
@@ -282,13 +286,12 @@ def main():
         human_turn(c_choice, h_choice)
         ai_turn(c_choice, h_choice)
 
-    # Game over message
+    # Если игра закончилась, то происходит проверка того, кто выиграл и выводится сообщение о победе/проигрыше
     if wins(board, HUMAN, num, rule):
         clean()
         print(f'Human turn [{h_choice}]')
         render(board, c_choice, h_choice)
-        tmp = 'a'
-        print(f"{choose_color(tmp)}YOU WIN!{choose_color('')}")
+        print(f"{win_loose_color}YOU WIN!{end_color}")
     elif wins(board, COMP, num, rule):
         clean()
         print(f'Computer turn [{c_choice}]')
