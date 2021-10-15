@@ -29,7 +29,7 @@ if wins(board, HUMAN, num, rule):
 ...
 ~~~~
 
-<p align="center"><img src="images/main.png" alt = "main function" width="450"></p>
+<p align="center"><img src="images/main.png" alt = "main function" width="700"></p>
 
 ### <p align="center">tictactoe.py</p>
 В файл tictactoe.py вынесены некоторые функции:
