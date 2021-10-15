@@ -1,4 +1,7 @@
-# функция принимает строку и возвращает цвет в зависимости от принятой строки
+import numpy as np
+
+
+# функция принимает строку и возвращает цвет в зависимости от значения
 # на O возвращает зеленый
 # на X возвращает красный
 # на '' возвращает конец форматирования
@@ -60,31 +63,28 @@ def wins(state, player, num: int, rule: int) -> bool:
 
     horizontal = []
     vertical = []
-    diagonal1 = []
-    diagonal2 = []
-    cnt = 0
-    cnt2 = num - 1
     for i in range(num):
         tmp1 = []
         tmp2 = []
         for j in range(num):
             tmp1.append(state[i][j])
             tmp2.append(state[j][i])
-        # horizontal.append(tmp1)
-        # vertical.append(tmp2)
         horizontal += split_ls(tmp1, rule)
         vertical += split_ls(tmp2, rule)
-        diagonal1.append(tmp1[cnt])
-        diagonal2.append(tmp2[cnt2])
-        cnt += 1
-        cnt2 -= 1
 
-    diagonal1 = split_ls(diagonal1, rule)
-    diagonal2 = split_ls(diagonal2, rule)
+    test = np.array(state)
+    tmp = []
 
-    win_state = [*horizontal, *vertical, *diagonal1, *diagonal2]
+    diags = [test[::-1, :].diagonal(i) for i in range(-9, 10)]
+    diags.extend(test.diagonal(i) for i in range(9, -10, -1))
+    for i in diags:
+        if len(i) >= 5:
+            for j in (split_ls(i, rule)[0:]):
+                tmp.append(list(j))
 
-    if [player] * rule in win_state:
+    test2 = [*horizontal, *vertical, *tmp]
+
+    if [player] * rule in test2:
         return True
     else:
         return False
@@ -93,7 +93,7 @@ def wins(state, player, num: int, rule: int) -> bool:
 # функция для определения доступных ходов
 # принимает размерность игрового поля
 # возвращает словарь в котором ключ - номер клетки, а значение - координаты клетки
-# пример для  игрового поля 3 Х 3
+# пример для  игрового поля 3 x 3:
 # moves = {
 #     1: [0, 0], 2: [0, 1], 3: [0, 2],
 #     4: [1, 0], 5: [1, 1], 6: [1, 2],

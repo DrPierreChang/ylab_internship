@@ -197,7 +197,7 @@ def ai_turn(c_choice, h_choice):
 
 
     set_move(x, y, COMP)
-    time.sleep(1)
+    # time.sleep(1)
 
 
 def human_turn(c_choice, h_choice):
