@@ -104,27 +104,28 @@ def set_move(x, y, player):
 
 def minimax(state, depth, player):
     """
-    AI function that choice the best move
-    :param state: current state of the board
-    :param depth: node index in the tree (0 <= depth <= 9),
-    but never nine in this case (see iaturn() function)
-    :param player: an human or a computer
-    :return: a list with [the best row, best col, best score]
+    Функция возвращает координаты самого выгодного хода для компьютер
+    :param state: текущее состояние игрового поля
+    :param depth: глубина рекурсии
+    :param player: Человек или Компьютер HUMAN or COMP
+    :return: возвращается лист с [координатой лучшей строки, координатой лучшей колонки, лучшим результатом]
     """
+    # при выборе выгодного хода компьютер использует параметр score - лучший результат
+    # при правильном ходе score увеличивается, при ошибочном уменьшается
+    # изначально он равен -infinity. И компьютеру необходимо максимизировать это значение
     if player == COMP:
         best = [-1, -1, -infinity]
+    # изначальный score человека равен +infinity.
+    # и человек должен минимизировать это значение, совершая правильные ходы
     else:
         best = [-1, -1, +infinity]
 
-    # if depth == 0 or game_over(state):
-    #     score = evaluate(state)
-    #     return [-1, -1, score]
-
-
+    # если в рекурсии достигнуто дно, то возвращается лучший результат
     if depth == 0 or game_over(state):
         score = evaluate(state)
         return [-1, -1, score]
 
+    # перебираем в рекурсии свободные клетки на каждой итерации моделируя ход компьютера и человека
     for cell in empty_cells(state):
         x, y = cell[0], cell[1]
         state[x][y] = player
@@ -132,9 +133,11 @@ def minimax(state, depth, player):
         state[x][y] = 0
         score[0], score[1] = x, y
 
+        # сохраняем текущий лучший результат для компьютера
         if player == COMP:
             if score[2] > best[2]:
                 best = score  # max value
+        # сохраняем текущий лучший результат для человека
         else:
             if score[2] < best[2]:
                 best = score  # min value
@@ -144,7 +147,7 @@ def minimax(state, depth, player):
 
 def clean():
     """
-    Clears the console
+    Функция очищает консоль
     """
     os_name = platform.system().lower()
     if 'windows' in os_name:
@@ -155,8 +158,8 @@ def clean():
 
 def render(state, c_choice, h_choice):
     """
-    Print the board on console
-    :param state: current state of the board
+    Функцию выводит в консоль текущее состояние игрового поля
+    :param state: текущее состояние игрового поля
     """
 
     chars = {

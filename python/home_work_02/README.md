@@ -95,6 +95,54 @@ elif empty_cells_amount > 30:
   set_move(x, y, COMP)
 ~~~~
 
+### <p align="center">Алгоритм Minimax</p>
+
+Реализация алгоритма выглядит следующим образом:
+~~~~python
+def minimax(state, depth, player):
+    """
+    Функция возвращает координаты самого выгодного хода для компьютера
+    :param state: текущее состояние игрового поля
+    :param depth: глубина рекурсии
+    :param player: Человек или Компьютер HUMAN or COMP
+    :return: возвращается лист с [координатой лучшей строки, координатой лучшей колонки, лучшим результатом]
+    """
+    # при выборе выгодного хода компьютер использует параметр score - лучший результат
+    # при правильном ходе score увеличивается, при ошибочном уменьшается
+    # изначально он равен -infinity. И компьютеру необходимо максимизировать это значение
+    if player == COMP:
+        best = [-1, -1, -infinity]
+    # изначальный score человека равен +infinity.
+    # и человек должен минимизировать это значение, совершая правильные ходы
+    else:
+        best = [-1, -1, +infinity]
+        
+    # если в рекурсии достигнуто дно, то возвращается лучший результат
+    if depth == 0 or game_over(state):
+        score = evaluate(state)
+        return [-1, -1, score]
+
+    # перебираем в рекурсии свободные клетки,
+    # на каждой итерации чередуя и моделируя ход компьютера и человека
+    for cell in empty_cells(state):
+        x, y = cell[0], cell[1]
+        state[x][y] = player
+        score = minimax(state, depth - 1, -player)
+        state[x][y] = 0
+        score[0], score[1] = x, y
+
+        # сохраняем текущий лучший результат для компьютера
+        if player == COMP:
+            if score[2] > best[2]:
+                best = score  # max value
+        # сохраняем текущий лучший результат для человека
+        else:
+            if score[2] < best[2]:
+                best = score  # min value
+
+    return best
+~~~~
+
 ### <p align="center">tictactoe.py</p>
 В файл tictactoe.py вынесены некоторые функции:
 
