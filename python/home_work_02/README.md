@@ -1,6 +1,21 @@
 # "Обратные крестики-нолики"
- Игра на поле 10 x 10 с правилом «Пять в ряд» – проигрывает тот,
+Консольная игра на поле 10 x 10 с правилом «Пять в ряд» – проигрывает тот,
 у кого получился вертикальный, горизонтальный или диагональный ряд из пяти своих фигур (крестиков/ноликов).
+
+Игра запускается из файла main.py
+
+~~~~shell
+python main.py
+~~~~
+Несколько функций вынесены в файл tictactoe.py
+
+В работе использовался python3.9 и библиотеки:
+- numpy
+- math
+- random
+- platform
+- time
+- os 
 
 Игра работает в режиме «человек против компьютера».
 
@@ -151,7 +166,7 @@ def minimax(state, depth, player):
 ~~~~
 Так выглядит пример визуализации дерева рекурсии
 <p align="center">
-    <img src="images/tree.png" width="600">
+    <img src="images/tree.png" width="700">
 </p>
 
 </br>
@@ -188,7 +203,7 @@ elif (text.lower()) == 'x':
     color = Bcolors.FAIL
 ~~~~
 
-<p align="center"><img src="images/loose.png" alt = "example of function return" width="450"></p>
+<p align="center"><img src="images/loose.png" alt = "example of function return" width="700"></p>
 
 Функция принимет строку/столбец игрового поля и правило(сколько в ряд)
 ~~~~python
