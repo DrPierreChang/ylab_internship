@@ -142,6 +142,10 @@ def minimax(state, depth, player):
 
     return best
 ~~~~
+Так выглядит визуализация дерева рекурсии
+<p align="center">
+    <img src="images/tree.png" width="600">
+</p>
 
 ### <p align="center">tictactoe.py</p>
 В файл tictactoe.py вынесены некоторые функции:
