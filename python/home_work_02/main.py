@@ -27,6 +27,11 @@ end_color = choose_color('end')
 # генерируем игровое поле с заданной размерностью
 board = ([[0]*num for x in range(num)])
 
+# Словарь. Ключ - номер клетки. Значение - ее координаты.
+moves = valid_moves(num)
+
+
+
 
 def evaluate(state):
     """
@@ -35,9 +40,9 @@ def evaluate(state):
     :return: +1 if the computer wins; -1 if the human wins; 0 draw
     """
     if wins(state, COMP, num, rule):
-        score = +1
-    elif wins(state, HUMAN, num, rule):
         score = -1
+    elif wins(state, HUMAN, num, rule):
+        score = +1
     else:
         score = 0
 
@@ -69,6 +74,7 @@ def empty_cells(state):
     return cells
 
 
+
 def valid_move(x, y):
     """
     A move is valid if the chosen cell is empty
@@ -96,7 +102,7 @@ def set_move(x, y, player):
         return False
 
 
-def minimax(state, depth, player):
+def minimax(state, depth, player, check):
     """
     AI function that choice the best move
     :param state: current state of the board
@@ -110,14 +116,19 @@ def minimax(state, depth, player):
     else:
         best = [-1, -1, +infinity]
 
-    if depth == 0 or game_over(state):
+    # if depth == 0 or game_over(state):
+    #     score = evaluate(state)
+    #     return [-1, -1, score]
+
+
+    if check == 0 or game_over(state):
         score = evaluate(state)
         return [-1, -1, score]
 
     for cell in empty_cells(state):
         x, y = cell[0], cell[1]
         state[x][y] = player
-        score = minimax(state, depth - 1, -player)
+        score = minimax(state, depth - 1, -player, check-1)
         state[x][y] = 0
         score[0], score[1] = x, y
 
@@ -176,12 +187,14 @@ def render(state, c_choice, h_choice):
 
 def ai_turn(c_choice, h_choice):
     """
-    It calls the minimax function if the depth < 9,
-    else it choices a random coordinate.
+    Если глубина(количество пустых клеток < 9,
+    вызывается адаптированная под обратные крестики, нолики
+    функция minimax
+    В противном случае выбираются случайные координаты.
     :param c_choice: computer's choice X or O
     :param h_choice: human's choice X or O
-    :return:
     """
+
     depth = len(empty_cells(board))
     if depth == 0 or game_over(board):
         return
@@ -190,13 +203,30 @@ def ai_turn(c_choice, h_choice):
     print(f'Computer turn [{c_choice}]')
     render(board, c_choice, h_choice)
 
-    if depth > 9:
+    if depth > 80:
         # выбираем случайную строку
         x = choice(list(range(num)))
         # выбираем случайный столбец
         y = choice(list(range(num)))
+    elif depth > 40:
+        check = 2
+        move = minimax(board, depth, COMP, check)
+        x, y = move[0], move[1]
+    elif depth > 30:
+        check = 3
+        move = minimax(board, depth, COMP, check)
+        x, y = move[0], move[1]
+    elif depth > 20:
+        check = 4
+        move = minimax(board, depth, COMP, check)
+        x, y = move[0], move[1]
+    elif depth > 10:
+        check = 5
+        move = minimax(board, depth, COMP, check)
+        x, y = move[0], move[1]
     else:
-        move = minimax(board, depth, COMP)
+        check = 7
+        move = minimax(board, depth, COMP, check)
         x, y = move[0], move[1]
 
 
@@ -204,22 +234,17 @@ def ai_turn(c_choice, h_choice):
     # time.sleep(1)
 
 
-def human_turn(c_choice, h_choice):
+def human_turn(c_choice: str, h_choice: str):
     """
-    The Human plays choosing a valid move.
-    :param c_choice: computer's choice X or O
-    :param h_choice: human's choice X or O
-    :return:
+    Человек ходит исходя из свободных клеток
+    :param c_choice: X или O
+    :param h_choice: X или O
     """
     depth = len(empty_cells(board))
     if depth == 0 or game_over(board):
         return
 
-    # Dictionary of valid moves
     move = -1
-
-    moves = valid_moves(num)
-
     clean()
     print(f'Human turn [{h_choice}]')
     render(board, c_choice, h_choice)
@@ -291,12 +316,12 @@ def main():
         clean()
         print(f'Human turn [{h_choice}]')
         render(board, c_choice, h_choice)
-        print(f"{win_loose_color}YOU WIN!{end_color}")
+        print(f"{win_loose_color}YOU LOOSE!{end_color}")
     elif wins(board, COMP, num, rule):
         clean()
         print(f'Computer turn [{c_choice}]')
         render(board, c_choice, h_choice)
-        print('YOU LOSE!')
+        print('You WIN!')
     else:
         clean()
         render(board, c_choice, h_choice)
