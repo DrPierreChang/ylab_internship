@@ -2,7 +2,7 @@
 from math import inf as infinity
 from random import choice
 import platform
-import time
+# import time
 from os import system
 from tictactoe import *
 
@@ -72,7 +72,6 @@ def empty_cells(state):
                 cells.append([x, y])
 
     return cells
-
 
 
 def valid_move(x, y):
