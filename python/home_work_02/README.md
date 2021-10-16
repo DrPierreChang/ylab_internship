@@ -306,6 +306,11 @@ def valid_moves(num: int) -> dict:
 ~~~~
 
 ### <p align="center">Источники информации</p>
+
+Books:
+- Бхаргава Адитья: Грокаем алгоритмы.
+- Мэтт Харрисон: Как устроен Python.
+
 Wiki:
 - [ANSI escape code](https://en.wikipedia.org/wiki/ANSI_escape_code)
 
