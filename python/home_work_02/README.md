@@ -1,5 +1,8 @@
 # Игра "Обратные крестики-нолики"
-<p align="center"><img src="images/win.png" alt="game example" width="700"></p>
+<p align="center">
+    <img src="images/win.png" alt="game example" width="700">
+</p>
+
 ### <p align="center">Общая логика работы игры. Функция main</p>
 
 1) Выбираем - играть за O или X:
