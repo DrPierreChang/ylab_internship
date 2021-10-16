@@ -142,12 +142,14 @@ def minimax(state, depth, player):
 
     return best
 ~~~~
-Так выглядит визуализация дерева рекурсии
+Так выглядит пример визуализации дерева рекурсии
 <p align="center">
     <img src="images/tree.png" width="600">
 </p>
 
 ### <p align="center">tictactoe.py</p>
+
+
 В файл tictactoe.py вынесены некоторые функции:
 
 ~~~~python
@@ -158,7 +160,7 @@ def choose_color(text: str): ...
 
 Это необходимо, чтобы раскрасить X, O и другие элементы разными цветами при игре в консоли
 
-<p align="center"><img src="images/choose_color.png" alt = "example of function return" width="450"></p>
+<p align="center"><img src="images/loose.png" alt = "example of function return" width="450"></p>
 
 ### <p align="center">Источники информации</p>
 Google:

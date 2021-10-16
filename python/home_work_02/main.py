@@ -7,10 +7,10 @@ from os import system
 from tictactoe import *
 
 """
-An implementation of Minimax AI Algorithm in Tic Tac Toe,
-using Python.
+Игра "Обратные крестики нолики" с использованием алгоритма minimax
 """
 
+# значения score для человека и компьютера
 HUMAN = -1
 COMP = +1
 
@@ -31,13 +31,11 @@ board = ([[0]*num for x in range(num)])
 moves = valid_moves(num)
 
 
-
-
 def evaluate(state):
     """
-    Function to heuristic evaluation of state.
-    :param state: the state of the current board
-    :return: +1 if the computer wins; -1 if the human wins; 0 draw
+    Функция оценивает ход, приводит ли он к победе
+    :param state: текущее состояние игрового поля
+    :return: +1 если выигрывает человек; -1 если выигрывает компьютер; 0 при ничье
     """
     if wins(state, COMP, num, rule):
         score = -1
@@ -51,21 +49,23 @@ def evaluate(state):
 
 def game_over(state):
     """
-    This function test if the human or computer wins
-    :param state: the state of the current board
-    :return: True if the human or computer wins
+    Проверяем, победил ли кто-то из игроков
+    :param state: текущее состояние игрового поля
+    :return: True - есть победитель False - нет победителя
     """
+
     return wins(state, HUMAN, num, rule) or wins(state, COMP, num, rule)
 
 
 def empty_cells(state):
     """
-    Each empty cell will be added into cells' list
-    :param state: the state of the current board
-    :return: a list of empty cells
+    Каждая свободная клетка добавляется в список
+    :param state: текущее состояние игрового поля
+    :return: возвращается список свободных клеток
     """
     cells = []
 
+    # идем по строкам и столбцам, проверяя свободная ли клетка
     for x, row in enumerate(state):
         for y, cell in enumerate(row):
             if cell == 0:
@@ -77,10 +77,10 @@ def empty_cells(state):
 
 def valid_move(x, y):
     """
-    A move is valid if the chosen cell is empty
-    :param x: X coordinate
-    :param y: Y coordinate
-    :return: True if the board[x][y] is empty
+    Ход игрока возможен, если клетка с указанными координатами свободна
+    :param x: X координата
+    :param y: Y координата
+    :return: Возвращается True, если клетка свободна False, если она занята
     """
     if [x, y] in empty_cells(board):
         return True
@@ -90,11 +90,13 @@ def valid_move(x, y):
 
 def set_move(x, y, player):
     """
-    Set the move on board, if the coordinates are valid
-    :param x: X coordinate
-    :param y: Y coordinate
-    :param player: the current player
+    Функция принимает координаты и фиксирует ход игрока, если такая клетка свободна
+    :param x: X координата
+    :param y: Y координата
+    :param player: игрок, который сейчас ходит
     """
+
+    # проверяем, свободна ли клетка
     if valid_move(x, y):
         board[x][y] = player
         return True
@@ -333,11 +335,11 @@ def main():
         clean()
         print(f'Computer turn [{c_choice}]')
         render(board, c_choice, h_choice)
-        print('You WIN!')
+        print(f"{win_loose_color}YOU WIN!{end_color}")
     else:
         clean()
         render(board, c_choice, h_choice)
-        print('DRAW!')
+        print(f"{win_loose_color}DRAW!{end_color}")
 
     exit()
 
