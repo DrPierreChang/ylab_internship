@@ -306,11 +306,6 @@ def valid_moves(num: int) -> dict:
 ~~~~
 
 ### <p align="center">Источники информации</p>
-Google:
-- [Print Colors in Python terminal](https://www.geeksforgeeks.org/print-colors-python-terminal/)
-- [ПРИНЦИП МАКСИМИНА (МИНИМАКСА)](http://www.math.mrsu.ru/text/courses/method/princip_maxmin_minmax.htm)
-- [Минимакс и максимакс](https://math.semestr.ru/games/minimax.php)
-
 Wiki:
 - [ANSI escape code](https://en.wikipedia.org/wiki/ANSI_escape_code)
 
@@ -326,6 +321,11 @@ GitHub
 - [tic-tac-toe-minimax](https://github.com/Cledersonbc/tic-tac-toe-minimax)
 - [Tic Tac Toe](https://gitlab.com/sunilghimire/tic-tac-toe)
 - [Tic-Tac-Toe-Python](https://github.com/VaibhavSaini19/Tic-Tac-Toe-Python)
+
+Others:
+- [Print Colors in Python terminal](https://www.geeksforgeeks.org/print-colors-python-terminal/)
+- [ПРИНЦИП МАКСИМИНА (МИНИМАКСА)](http://www.math.mrsu.ru/text/courses/method/princip_maxmin_minmax.htm)
+- [Минимакс и максимакс](https://math.semestr.ru/games/minimax.php)
 
 ### <p align="center">Что можно улучшить?</p>
 - Сделать веб-приложение Django+JS. Напрммер, https://cledersonbc.github.io/tic-tac-toe-minimax/
