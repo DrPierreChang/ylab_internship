@@ -102,7 +102,7 @@ def set_move(x, y, player):
         return False
 
 
-def minimax(state, depth, player, check):
+def minimax(state, depth, player):
     """
     AI function that choice the best move
     :param state: current state of the board
@@ -121,14 +121,14 @@ def minimax(state, depth, player, check):
     #     return [-1, -1, score]
 
 
-    if check == 0 or game_over(state):
+    if depth == 0 or game_over(state):
         score = evaluate(state)
         return [-1, -1, score]
 
     for cell in empty_cells(state):
         x, y = cell[0], cell[1]
         state[x][y] = player
-        score = minimax(state, depth - 1, -player, check-1)
+        score = minimax(state, depth - 1, -player)
         state[x][y] = 0
         score[0], score[1] = x, y
 
@@ -187,49 +187,53 @@ def render(state, c_choice, h_choice):
 
 def ai_turn(c_choice, h_choice):
     """
-    Если глубина(количество пустых клеток < 9,
-    вызывается адаптированная под обратные крестики, нолики
-    функция minimax
-    В противном случае выбираются случайные координаты.
-    :param c_choice: computer's choice X or O
-    :param h_choice: human's choice X or O
+    Первые 10 шагов компьютер делает в случайном порядке.
+    Далее идет обращение к рекурсивной функции основанной на алгоритме minimax
+    Глубина рекурсии начинается с 2 и возрастает по мере увеличения свободных клеток.
+    Это значит, сложность игры постепенно возрастает, так как решения компьютера становятся все более взвешенными.
+    :param c_choice: за кого играет компьютер X or O
+    :param h_choice: за кого играет человек X or O
     """
+    # количество пустых клеток
+    empty_cells_amount = len(empty_cells(board))
 
-    depth = len(empty_cells(board))
-    if depth == 0 or game_over(board):
+    # выход из функции если игра закончилась
+    if empty_cells_amount == 0 or game_over(board):
         return
 
     clean()
     print(f'Computer turn [{c_choice}]')
     render(board, c_choice, h_choice)
 
-    if depth > 80:
+    # первые десять ходов компьютер делает в случайном порядке
+    if empty_cells_amount > 80:
         # выбираем случайную строку
         x = choice(list(range(num)))
         # выбираем случайный столбец
         y = choice(list(range(num)))
-    elif depth > 40:
-        check = 2
-        move = minimax(board, depth, COMP, check)
+    # с этого момента компьютер принимает решения на основе алгоритма minimax
+    elif empty_cells_amount > 40:
+        depth = 2
+        move = minimax(board, depth, COMP)
         x, y = move[0], move[1]
-    elif depth > 30:
-        check = 3
-        move = minimax(board, depth, COMP, check)
+    elif empty_cells_amount > 30:
+        depth = 3
+        move = minimax(board, depth, COMP)
         x, y = move[0], move[1]
-    elif depth > 20:
-        check = 4
-        move = minimax(board, depth, COMP, check)
+    elif empty_cells_amount > 20:
+        depth = 4
+        move = minimax(board, depth, COMP)
         x, y = move[0], move[1]
-    elif depth > 10:
-        check = 5
-        move = minimax(board, depth, COMP, check)
+    elif empty_cells_amount > 10:
+        depth = 5
+        move = minimax(board, depth, COMP)
         x, y = move[0], move[1]
     else:
-        check = 7
-        move = minimax(board, depth, COMP, check)
+        depth = 7
+        move = minimax(board, depth, COMP)
         x, y = move[0], move[1]
 
-
+    # фиксируем ход на игровом поле
     set_move(x, y, COMP)
     # time.sleep(1)
 
@@ -240,8 +244,10 @@ def human_turn(c_choice: str, h_choice: str):
     :param c_choice: X или O
     :param h_choice: X или O
     """
-    depth = len(empty_cells(board))
-    if depth == 0 or game_over(board):
+
+    # проверяем оставшееся количество свободных клеток
+    empty_cells_amount = len(empty_cells(board))
+    if empty_cells_amount == 0 or game_over(board):
         return
 
     move = -1
@@ -249,12 +255,15 @@ def human_turn(c_choice: str, h_choice: str):
     print(f'Human turn [{h_choice}]')
     render(board, c_choice, h_choice)
 
+    # просим игрока ввести номер клетки для своего хода
     while move < 1 or move > 100:
         try:
             move = int(input('Use numpad (1..100): '))
             coord = moves[move]
+            # если клетка доступна для хода и введено корректный номер
             can_move = set_move(coord[0], coord[1], HUMAN)
 
+            # если клетка не доступна для хода или введено некорректное значение
             if not can_move:
                 print('Bad move')
                 move = -1
