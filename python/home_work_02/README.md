@@ -1,7 +1,14 @@
-# Игра "Обратные крестики-нолики"
+# "Обратные крестики-нолики"
+ Игра на поле 10 x 10 с правилом «Пять в ряд» – проигрывает тот,
+у кого получился вертикальный, горизонтальный или диагональный ряд из пяти своих фигур (крестиков/ноликов).
+
+Игра работает в режиме «человек против компьютера».
+
+
 <p align="center">
-    <img src="images/win.png" alt="game example" width="700">
+ <img src="images/win.png" alt="game example" width="700">
 </p>
+ 
 
 ### <p align="center">Общая логика работы игры. Функция main</p>
 
@@ -299,3 +306,14 @@ Stack Overflow:
 YouTube
 - [Algorithms Explained – minimax and alpha-beta pruning](https://youtu.be/l-hh51ncgDI)
 - [What is the Minimax Algorithm? - Artificial Intelligence](https://youtu.be/KU9Ch59-4vw)
+
+GitHub
+- [tic-tac-toe-minimax](https://github.com/Cledersonbc/tic-tac-toe-minimax)
+- [Tic Tac Toe](https://gitlab.com/sunilghimire/tic-tac-toe)
+- [Tic-Tac-Toe-Python](https://github.com/VaibhavSaini19/Tic-Tac-Toe-Python)
+
+### <p align="center">Что можно улучшить?</p>
+- Сделать веб-приложение Django+JS. Напрммер, https://cledersonbc.github.io/tic-tac-toe-minimax/
+- Сделать графический интерфейс Tkinter/Turtle. Например, https://github.com/VaibhavSaini19/Tic-Tac-Toe-Python
+- Попробовать другие значения параметров рекурсии
+- Оптимизировать громоздкие циклы
