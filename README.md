@@ -10,4 +10,4 @@ Internship activity in YLab Development
 ## Java
 
 - [Study plan](https://javarush.ipnodns.ru/) on javarush.ru
-- [Solutions for home work 1](https://github.com/DrPierreChang/ylab_internship/tree/main/java/src/javarush_level_01) level 1 on javarush.com
+- [Solutions for home work 1](https://github.com/DrPierreChang/ylab_internship/tree/main/java/src/javarush_level_01) (level 1 on javarush.com)
