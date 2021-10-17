@@ -1,10 +1,9 @@
-# <p align="center">Лекция 1</p>
-
+### План обучения
 - [javarush.ipnodns.ru](https://javarush.ipnodns.ru/)
+
+### Дополнительные источники информации
 - [Baeldung](https://www.baeldung.com/)
-
-### Литература
-
 - [Goalkicker](https://books.goalkicker.com/JavaBook/ )
+
 
 
