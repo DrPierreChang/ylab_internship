@@ -10,19 +10,20 @@ Config.set("graphics", "resizable", "0")
 Config.set("graphics", "width", "300")
 Config.set("graphics", "height", "300")
 
-
+saveInput = ""
 
 class CalculatorApp(App):
 
     def calculate(self, symbol):
-
+        global saveInput
         if symbol.text is '<':
-            self.result.text = ""
+            saveInput = self.result.text = ""
         elif symbol.text is not '=':
             self.result.text += symbol.text
+            saveInput += symbol.text
         else:
-            try: self.result.text = str(eval(self.result.text))
-            except: self.result.text = ""
+            try: saveInput = self.result.text = str(eval(saveInput))
+            except: saveInput = self.result.text = ""
         
     def build(self):
         root = BoxLayout(orientation = "vertical", padding = 5)
