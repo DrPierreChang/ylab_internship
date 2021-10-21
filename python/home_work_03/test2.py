@@ -1,0 +1,1 @@
+print('Привет, зайка любимая \N{Smiling Face with Horns}')
