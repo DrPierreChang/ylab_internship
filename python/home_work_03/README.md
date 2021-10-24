@@ -187,7 +187,7 @@ elif figure_name == "Пирамида":
 <img src="images/7.png" alt="example">
 </p>
 
-Когда пользователь считает плоащадь для круга или квадрата, то также вызывается метод plot класса GeometricFigures
+Когда пользователь считает площадь для круга или квадрата, то также вызывается метод plot класса GeometricFigures
 
 ~~~~python
 if name == "Круг" or name == "Квадрат":
@@ -244,9 +244,58 @@ def plot(self, data: str, figure_name=""):
     # это файл будет загружаться калькулятором и отображаться
     figure.savefig('plot.png')
  ~~~~
+ 
+ ## <p align = "center">Автотесты</p>
+ 
+ Тесты находятся в файле test.py
+ 
+ В разработанном калькуляторе 2 класса для произведения расчетов над фигурами:
+ - GeometricFigures - содержит методы area - расчет площади всех фигур, plots - визуализация круга и квадрата
+ - VolumetricFigures - содержит метод volume - расчет объема для объемных фигур
+
+Тесты проверяют методы area, volume
+
+Использованы subTests, чтобы проверить методы для всех возможных фигур
+
+Каждый подтест принмает даныне для расчета и название определенной фигуры и сравнивает с ожидаемым результатом
+
+В первом тесте 12 подтестов - один подтест для каждой фигуры
+
+~~~python
+class TestArea(unittest.TestCase):
+    def test_area(self):
+        with self.subTest():
+            self.figure = GeometricFigures()
+            self.assertEqual(self.figure.area(44, figure_name="Круг"),
+                             6082.12337734984)
+            self.figure = GeometricFigures()
+            self.assertEqual(self.figure.area(4, figure_name="Сфера"),
+                             201.06192982974676)
+            self.figure = GeometricFigures()
+            self.assertEqual(self.figure.area(7, figure_name="Квадрат"),
+                             49)
+ ...
+ ~~~
+ 
+ Во втором тесте 6 подтестов - один подтест для каждой объемной фигуры
+ ~~~python
+class TestVolume(unittest.TestCase):
+    def test_volume(self):
+        with self.subTest():
+            self.figure = VolumetricFigures()
+            self.assertEqual(self.figure.volume(2, figure_name="Сфера"),
+                             33.510321638291124)
+            self.figure = VolumetricFigures()
+            self.assertEqual(self.figure.volume("10 20", figure_name="Пирамида"),
+                             66.66666666666666)
+            self.figure = VolumetricFigures()
+            self.assertEqual(self.figure.volume(3, figure_name="Куб"),
+                             27)
+ ...
+ ~~~
 
 
-## Источники информации
+## <p align = "center">Источники информации</p>
 Документация:
 - [Welcome to Kivy](https://kivy.org/doc/stable/)
 - [Button](https://kivy.org/doc/stable/api-kivy.uix.button.html#kivy.uix.button.Button.background_normal)
@@ -291,7 +340,7 @@ YouTube:
 - [Метод isdigit() в Python](https://pythonstart.ru/string/isdigit-python)
 - [Стандартный синтаксис разметки reStructuredText](https://sphinx-ru.readthedocs.io/ru/latest/rst-markup.html)
 
-### <p align="center">Что можно улучшить?</p>
+## <p align="center">Что можно улучшить?</p>
 - Добавить визуализацию остальных фигур
 - Расширить функциональность
 - Попробовать другие конфигурации и сочетания элементов kivy
