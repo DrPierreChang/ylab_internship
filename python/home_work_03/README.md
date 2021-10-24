@@ -218,3 +218,8 @@ Wiki:
 - [Исключения в python](https://pythonworld.ru/tipy-dannyx-v-python/isklyucheniya-v-python-konstrukciya-try-except-dlya-obrabotki-isklyuchenij.html)
 - [Метод isdigit() в Python](https://pythonstart.ru/string/isdigit-python)
 - [Стандартный синтаксис разметки reStructuredText](https://sphinx-ru.readthedocs.io/ru/latest/rst-markup.html)
+
+### <p align="center">Что можно улучшить?</p>
+- Добавить визуализацию остальных фигур
+- Расширить функциональность
+- Попробовать другие конфигурации kivy
