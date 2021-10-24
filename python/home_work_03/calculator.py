@@ -55,7 +55,7 @@ class GeometricCalculatorApp(App):
         else:
             # если нажата кнопка площади
             if button.text == "Площадь":
-                # данные введенные в тестовом поле
+                # данные введенные в текстовом поле
                 data = self.box2.text
                 try:
                     # направляем данные в метод area
