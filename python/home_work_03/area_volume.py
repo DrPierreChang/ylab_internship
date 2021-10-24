@@ -77,44 +77,77 @@ class GeometricFigures:
         # результат возвращается пользователю
         return self.figure_area
 
-    def plot(self, data, figure_name=""):
+    def plot(self, data: str, figure_name=""):
+        """
+        Метод предназначен для визуализации фигур
+        :param data: данные, которые пользователь ввел для расчета площади
+        :param figure_name: имя фигуры, для которой производится расчет
+        :return: метод ничего не возвращает. Он сохраняет plot в файл
+        """
         cm = 1/2.54
 
-        # define Matplotlib figure and axis
+        # задаем плоскость для визуализации
+        # по умолчанию matplotlib использует inch,
+        # но можно использовать сантиметры, если пользоваться переводом
         figure, axes = plt.subplots(figsize=(20*cm, 10*cm))
         axes.set_aspect(1)
 
+        # если фигура круг
         if figure_name == "Круг":
+            # строим круг с ориентацией по x,y 0.5
             circle = plt.Circle((0.5, 0.5), float(data)*cm)
             axes.add_patch(circle)
 
+        # если фигура квадрат, то он строится с началом по x, y 0.1
         elif figure_name == "Квадрат":
             square =\
                 plt.Rectangle((0.1, 0.1), float(data)*cm, float(data)*cm)
             axes.add_patch(square)
 
+        # добавляем название фигуры на график
         plt.title(f"{figure_name}")
+        # сохраняем график в файл
+        # это файл будет загружаться калькулятором и отображаться
         figure.savefig('plot.png')
 
 
 class VolumetricFigures(GeometricFigures):
+    """
+    Класс содержит методы объемных фигур
+    """
+
+    # основное свойство объемных фигур - объем.
+    # он считается и возвращается пользователю
     figure_volume = 0
 
-    def volume(self, data, figure_name=""):
+    def volume(self, data: str, figure_name="") -> float:
+        """
+        Метод считает объем для объемных фигур
+        :param data: данные, введенные пользователем
+        :param figure_name: название фигуры
+        :return: метода возвращает посчитанный объем
+        """
+        # если выбрана сфера
         if figure_name == "Сфера":
+            # используем формулу
             self.figure_volume += (4/3 * pi * float(data)**3)
+        # если пользователь выбрал пирамиду
         elif figure_name == "Пирамида":
+            # так как данные приходят строкой
+            # то мы дополнительно их обрабатываем и проверяем
             sh = data.split()
             if len(sh) == 2:
                 s, h = float(sh[0]), float(sh[1])
                 # v = 1/3Sh h - высота пирамиды S - площадь основания
                 self.figure_volume += (1/3) * s * h
+        # если выбран куб считаем по формуле
         elif figure_name == "Куб":
             self.figure_volume += (float(data)**3)
         elif figure_name == "Параллелепипед":
             #  a - длина b ширина h высота
             abh = data.split()
             if len(abh) == 3:
+                # формула для объема параллелепипеда
                 a, b, h = float(abh[0]), float(abh[1]), float(abh[2])
                 self.figure_volume += (a * b * h)
         elif figure_name == "Цилиндр":
