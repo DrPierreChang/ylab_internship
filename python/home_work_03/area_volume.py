@@ -4,14 +4,25 @@ import matplotlib.pyplot as plt
 
 
 class GeometricFigures:
+    """
+    Данный класс содержит методы,
+    которые доступны могут иметь все фигуры - площадь, визуализация
+    Визуализация пока доступна только для круга и квадрата
+    """
+
+    # Класс имеет свойство площадь.
+    # Она будет считаться и возвращаться пользователю
     figure_area = 0
 
-    def area(self, data, figure_name="") -> float:
+    def area(self, data: str, figure_name="") -> float:
         """
-        :param data: аргументов для вычисления площади определенной фигуры
+        В методе считается площадь для всех фигур
+        Данные от пользователя приходят в виде строки
+        :param data: аргументы для вычисления площади определенной фигуры
         :param figure_name: имя фигуры для которой нужно посчитать площадь
         :return: возвращается посчитанная площадь
         """
+        # в зависимости от имени фигуры, подбираем формулу
         if figure_name == "Круг":
             self.figure_area += (float(data)**2 * pi)
         elif figure_name == "Сфера":
@@ -31,9 +42,14 @@ class GeometricFigures:
             bh = data.split()
             b, h = float(bh[0]), float(bh[1])
             self.figure_area += (0.5 * b * h)
+        # по названию нажатой кнопки подбирается необходимая формула
         elif figure_name == "Пирамида":
+            # a - длина стороны n - количество сторон  h - высота пирамиды
             anh = data.split()
+            # данные от пользователя приходят строкой,
+            # поэтому они преобразуются для дальнейших вычислений
             a, n, h = float(anh[0]), float(anh[1]), float(anh[2])
+            # считается площадь
             s = ((n * a)/2) * ((a/(2*tan(radians(180)/n))) +
                                (h**2 + (a/(2*tan(radians(180)/n)))**2)**0.5)
             self.figure_area += s
@@ -58,6 +74,7 @@ class GeometricFigures:
                 r, h = float(rh[0]), float(rh[1])
                 s = pi * r * (r + (r**2 + h**2)**0.5)
                 self.figure_area += s
+        # результат возвращается пользователю
         return self.figure_area
 
     def plot(self, data, figure_name=""):
