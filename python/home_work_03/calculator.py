@@ -8,7 +8,7 @@ from kivy.uix.image import Image
 from area_volume import GeometricFigures, VolumetricFigures
 
 # конфигурация окна kivy приложения
-# параметры высоты, ширины она
+# параметры высоты, ширины окна
 Config.set("graphics", "resizable", "0")
 Config.set("graphics", "width", "300")
 Config.set("graphics", "height", "300")
