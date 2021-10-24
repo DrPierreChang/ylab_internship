@@ -6,16 +6,16 @@ class TestArea(unittest.TestCase):
     def test_area(self):
         with self.subTest():
             self.figure = GeometricFigures()
-            self.assertEqual(self.figure.area(44, figure_name="Круг"),
+            self.assertEqual(self.figure.area("44", figure_name="Круг"),
                              6082.12337734984)
             self.figure = GeometricFigures()
-            self.assertEqual(self.figure.area(4, figure_name="Сфера"),
+            self.assertEqual(self.figure.area("4", figure_name="Сфера"),
                              201.06192982974676)
             self.figure = GeometricFigures()
-            self.assertEqual(self.figure.area(7, figure_name="Квадрат"),
+            self.assertEqual(self.figure.area("7", figure_name="Квадрат"),
                              49)
             self.figure = GeometricFigures()
-            self.assertEqual(self.figure.area(4, figure_name="Куб"),
+            self.assertEqual(self.figure.area("4", figure_name="Куб"),
                              96)
             self.figure = GeometricFigures()
             self.assertEqual(
@@ -50,16 +50,18 @@ class TestVolume(unittest.TestCase):
     def test_volume(self):
         with self.subTest():
             self.figure = VolumetricFigures()
-            self.assertEqual(self.figure.volume(2, figure_name="Сфера"),
+            self.assertEqual(self.figure.volume("2", figure_name="Сфера"),
                              33.510321638291124)
             self.figure = VolumetricFigures()
-            self.assertEqual(self.figure.volume("10 20", figure_name="Пирамида"),
+            self.assertEqual(self.figure.volume("10 20",
+                                                figure_name="Пирамида"),
                              66.66666666666666)
             self.figure = VolumetricFigures()
-            self.assertEqual(self.figure.volume(3, figure_name="Куб"),
+            self.assertEqual(self.figure.volume("3", figure_name="Куб"),
                              27)
             self.figure = VolumetricFigures()
-            self.assertEqual(self.figure.volume("1 2 3", figure_name="Параллелепипед"),
+            self.assertEqual(self.figure.volume("1 2 3",
+                                                figure_name="Параллелепипед"),
                              6)
             self.figure = VolumetricFigures()
             self.assertEqual(self.figure.volume("5 10", figure_name="Цилиндр"),
