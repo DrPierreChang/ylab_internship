@@ -178,8 +178,17 @@ elif figure_name == "Пирамида":
 </p>
 
 ## Источники информации
+Документация:
+- [Welcome to Kivy](https://kivy.org/doc/stable/)
+
+Stack Overflow
+- [How do I run multiple Python test cases in a loop?](https://stackoverflow.com/questions/19071601/how-do-i-run-multiple-python-test-cases-in-a-loop)
+
+Хабр:
+-[Юнит-тесты на Python: Быстрый старт](https://habr.com/ru/company/otus/blog/481806/)
 
 Другие:
-
 - [Площадь пирамиды](https://allcalc.ru/node/205)
-
+- [Модуль unittest: тестируем свои программы](https://pythonworld.ru/moduli/modul-unittest.html)
+- [How to use unittest to test multiple cases with assertEqual in python?](https://www.reddit.com/r/Python/comments/5od10q/how_to_use_unittest_to_test_multiple_cases_with/)
+- 
