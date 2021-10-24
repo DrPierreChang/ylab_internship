@@ -180,8 +180,70 @@ elif figure_name == "Пирамида":
 ## <p align = "center">Визуализация фигур</p>
 
 Визуализация пока доступна только для круга и квадрата.
+
 Использовалась библиотека matplotlib
 
+<p align="center">
+<img src="images/7.png" alt="example">
+</p>
+
+Когда пользователь считает плоащадь для круга или квадрата, то также вызывается метод plot класса GeometricFigures
+
+~~~~python
+if name == "Круг" or name == "Квадрат":
+    self.box2.text =\
+        str(figure.area(data, figure_name=f"{name}"))
+    # также данные направляются в метод plot
+    # чтобы показать визуализацию
+    # но только если фигура - квадрат или круг
+    figure.plot(data, figure_name=f"{name}")
+    # выводим визуализацию
+    self.image.source = 'plot.png'
+    # перезагружаем изображение,
+    # на случай если оно изменилось
+    self.image.reload()
+    # выводим результат расчета
+    self.box1.text =\
+        f"Площадь {name.lower()}а равна:"
+~~~~
+
+Метод принимает:
+- имя фигуры
+- введенные пользователем данные для расчета площади
+~~~~python
+def plot(self, data: str, figure_name=""):
+    """
+    Метод предназначен для визуализации фигур
+    :param data: данные, которые пользователь ввел для расчета площади
+    :param figure_name: имя фигуры, для которой производится расчет
+    :return: метод ничего не возвращает. Он сохраняет plot в файл
+    """
+    cm = 1/2.54
+
+    # задаем плоскость для визуализации
+    # по умолчанию matplotlib использует inch,
+    # но можно использовать сантиметры, если пользоваться переводом
+    figure, axes = plt.subplots(figsize=(20*cm, 10*cm))
+    axes.set_aspect(1)
+
+    # если фигура круг
+    if figure_name == "Круг":
+        # строим круг с ориентацией по x,y 0.5
+        circle = plt.Circle((0.5, 0.5), float(data)*cm)
+        axes.add_patch(circle)
+
+    # если фигура квадрат, то он строится с началом по x, y 0.1
+    elif figure_name == "Квадрат":
+        square =\
+            plt.Rectangle((0.1, 0.1), float(data)*cm, float(data)*cm)
+        axes.add_patch(square)
+
+    # добавляем название фигуры на график
+    plt.title(f"{figure_name}")
+    # сохраняем график в файл
+    # это файл будет загружаться калькулятором и отображаться
+    figure.savefig('plot.png')
+ ~~~~
 
 
 ## Источники информации
