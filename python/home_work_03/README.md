@@ -177,6 +177,13 @@ elif figure_name == "Пирамида":
  <img src="images/6.png" alt="example" width=650>
 </p>
 
+## <p align = "center">Визуализация фигур</p>
+
+Визуализация пока доступна только для круга и квадрата.
+Использовалась библиотека matplotlib
+
+
+
 ## Источники информации
 Документация:
 - [Welcome to Kivy](https://kivy.org/doc/stable/)
