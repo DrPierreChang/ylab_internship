@@ -180,15 +180,41 @@ elif figure_name == "Пирамида":
 ## Источники информации
 Документация:
 - [Welcome to Kivy](https://kivy.org/doc/stable/)
+- [Button](https://kivy.org/doc/stable/api-kivy.uix.button.html#kivy.uix.button.Button.background_normal)
+- [Figure size in different units](https://matplotlib.org/devdocs/gallery/subplots_axes_and_figures/figure_size_units.html)
+
+Книги:
+- Мэтт Харрисон: Как устроен Python.
 
 Stack Overflow
 - [How do I run multiple Python test cases in a loop?](https://stackoverflow.com/questions/19071601/how-do-i-run-multiple-python-test-cases-in-a-loop)
+- [plot a circle with pyplot](https://stackoverflow.com/questions/9215658/plot-a-circle-with-pyplot)
+- [Changing the background color of a Button in Kivy](https://stackoverflow.com/questions/20181250/changing-the-background-color-of-a-button-in-kivy)
+- [Save plot to image file instead of displaying it using Matplotlib](https://stackoverflow.com/questions/9622163/save-plot-to-image-file-instead-of-displaying-it-using-matplotlib)
+- [Avoiding "Too broad exception clause" warning in PyCharm](https://stackoverflow.com/questions/40775709/avoiding-too-broad-exception-clause-warning-in-pycharm)
+
+GitHub
+- [learning_python](https://github.com/DrPierreChang/linkedIn_learning/tree/main/become_a_python_developer/learning_python/exercise_files/Ch2)
 
 Хабр:
--[Юнит-тесты на Python: Быстрый старт](https://habr.com/ru/company/otus/blog/481806/)
+- [Юнит-тесты на Python: Быстрый старт](https://habr.com/ru/company/otus/blog/481806/)
+- [Что такое *args и **kwargs в Python?](https://habr.com/ru/company/ruvds/blog/482464/)
+
+Wiki:
+- [RGBA color model](https://en.wikipedia.org/wiki/RGBA_color_model)
 
 Другие:
+- [Trigonometric Functions in Python - sin, cos, tan etc](https://www.studytonight.com/post/trigonometric-function-in-python)
+- [6 Ways to Plot a Circle in Matplotlib](https://www.pythonpool.com/matplotlib-circle/)
 - [Площадь пирамиды](https://allcalc.ru/node/205)
 - [Модуль unittest: тестируем свои программы](https://pythonworld.ru/moduli/modul-unittest.html)
 - [How to use unittest to test multiple cases with assertEqual in python?](https://www.reddit.com/r/Python/comments/5od10q/how_to_use_unittest_to_test_multiple_cases_with/)
-- 
+- [Matplotlib нарисовать треугольник с заданными сторонами от ввода](https://stackru.com/questions/1544673/matplotlib-narisovat-treugolnik-s-zadannyimi-storonami-ot-vvoda)
+- [How to Draw Rectangles in Matplotlib](https://www.statology.org/matplotlib-rectangle/)
+- [Plot a Circle in Matplotlib](https://www.delftstack.com/howto/matplotlib/how-to-plot-a-circle-in-matplotlib/)
+- [Бирюзовые цвета и оттенки](https://get-color.ru/turquoise/)
+- [КОНВЕРТЕР ЦВЕТОВ](https://colorscheme.ru/color-converter.html)
+- [Метод str.rsplit() и split() в Python](https://pythonstart.ru/string/metod-str-split-python)
+- [Исключения в python](https://pythonworld.ru/tipy-dannyx-v-python/isklyucheniya-v-python-konstrukciya-try-except-dlya-obrabotki-isklyuchenij.html)
+- [Метод isdigit() в Python](https://pythonstart.ru/string/isdigit-python)
+- [Стандартный синтаксис разметки reStructuredText](https://sphinx-ru.readthedocs.io/ru/latest/rst-markup.html)
