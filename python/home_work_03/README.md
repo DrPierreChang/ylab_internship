@@ -204,7 +204,7 @@ Wiki:
 - [RGBA color model](https://en.wikipedia.org/wiki/RGBA_color_model)
 
 YouTube:
--[Python Kivy Калькулятор](https://youtu.be/Mu4mps4imJ4)
+- [Python Kivy Калькулятор](https://youtu.be/Mu4mps4imJ4)
 
 Другие:
 - [Trigonometric Functions in Python - sin, cos, tan etc](https://www.studytonight.com/post/trigonometric-function-in-python)
